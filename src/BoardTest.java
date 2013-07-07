@@ -38,7 +38,7 @@ public class BoardTest extends TestCase {
 	
 	// (a useful helper method)
 	// Make the following checks on a board that should be legal:
-	//	Check connector counts (# reds + # blues + # uncolored should be 16.
+	//	Check connector counts (# reds + # blues + # uncolored should be 15.
 	//	Check red vs. blue counts.
 	//	Check for duplicate connectors.
 	//	Check for a blue triangle, which shouldn't exist.

@@ -69,19 +69,17 @@ public class Board {
 	// Unchecked prerequisites:
 	//	Each connector in the board is properly initialized so that 
 	// 	1 <= myPoint1 < myPoint2 <= 6.
-	public boolean isOK ( ) {
-		if ((myPoint1 >= 1) && (myPoint1<=6)) {
-			if ((myPoint2>=2) && (myPoint2<=6)) {
-				if (myPoint1<myPoint2) {
-					return true;
-				} else {
-					return false;
+	public boolean isOK ( ) { //currently incorrect since we need to decide on storage for connectors
+		boolean returnVal=false;
+		if (myPoint1 != myPoint2) { 					//checks Point1 != Point 2
+			if ((myPoint1 >= 1) && (myPoint1<=6)) { 	//checks Point1 is in correct bounds
+				if ((myPoint2>=2) && (myPoint2<=6)) { 	//checks Point 2 is in correct bounds
+					if (myPoint1<myPoint2) { 			//checks Point 1 < Point 2
+						returnVal = true;
+					} 
 				}
 			}
-			else {
-				return false;
-			}
 		}
-		return true;
+		return returnVal;
 	}
 }
