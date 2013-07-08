@@ -133,7 +133,7 @@ public class ConnectorTest {
 		
 		thrown = false;
 		try {
-			Connector.toConnector("--17");		// input with non-integer characters
+			Connector.toConnector("--13");		// input with non-integer characters
 		} catch (IllegalFormatException e) {
 		    thrown = true;
 		}
