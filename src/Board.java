@@ -4,18 +4,31 @@ import java.util.*;
 public class Board {
 
 	public static boolean iAmDebugging = true;
-	private int myPoint1, myPoint2;
-	
+	private int myPoint1, myPoint2; //take this out when we're done with isOK
+	private ArrayList<Connector> redConnectors;
+	private ArrayList<Connector> bluConnectors;
+	private ArrayList<Connector> whtConnectors;
 	// Initialize an empty board with no colored edges.
 	public Board ( ) {
-		// You fill this in.
+		redConnectors = new ArrayList<Connector>();
+		bluConnectors = new ArrayList<Connector>();
+		whtConnectors = new ArrayList<Connector>();
+		for (int p1 = 1 ; p1<6 ; p1++) { //add all possible connectors
+			for (int p2 = (p1+1); p2<=6 ; p2++) {
+				whtConnectors.add(new Connector(p1,p2));
+			}
+		}
 	}
 	
 	// Add the given connector with the given color to the board.
 	// Unchecked precondition: the given connector is not already chosen 
 	// as RED or BLUE.
-	public void add (Connector cnctr, Color c) {
+	public void add (Connector cnctr, Color c) { //NOT FINISHED
 		// You fill this in.
+		if (c.equals(Color.RED)) {
+			redConnectors.add(cnctr);
+			
+		}
 	}
 	
 	// Set up an iterator through the connectors of the given color, 

@@ -28,21 +28,21 @@ public class ConnectorTest extends TestCase{
 		Connector c5 = Connector.toConnector(" 43");
 		assertTrue(c1.equals(c5));
 		Connector c6 = Connector.toConnector("61");
-		assertTrue(c1.equals(c6));
+		assertTrue(c2.equals(c6));
 		Connector c7 = Connector.toConnector("16 ");
 		assertTrue(c2.equals(c7));
 		Connector c8 = Connector.toConnector("   61  ");
 		assertTrue(c2.equals(c8));
 		
 		
-		// test toConnector() with invalid user inputs
-		//boolean thrown = false;
-		//try {
-		//	Connector.toConnector("33");
-		//} catch (IllegalFormatException e) {
-		//   thrown = true;
-		//}
-		//assertTrue(thrown);
+		//test toConnector() with invalid user inputs
+		boolean thrown = false;
+		try {
+			Connector.toConnector("33");
+		} catch (IllegalFormatException e) {
+		   thrown = true;
+		}
+		assertTrue(thrown);
 		
 		Connector c9 = Connector.toConnector("33");		
 		assertTrue(c9.equals(null));	
@@ -52,8 +52,8 @@ public class ConnectorTest extends TestCase{
 		assertTrue(c11.equals(null));
 		Connector c12 = Connector.toConnector("5");
 		assertTrue(c12.equals(null));
-		//Connector c13 = Connector.toConnector("222");
-		//assertTrue(c13.equals(null));
+		Connector c13 = Connector.toConnector("222");
+		assertTrue(c13.equals(null));
 		Connector c14 = Connector.toConnector("");
 		assertTrue(c14.equals(null));
 		Connector c15 = Connector.toConnector("   ");
