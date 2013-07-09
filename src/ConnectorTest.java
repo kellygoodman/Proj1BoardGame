@@ -1,11 +1,7 @@
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
-import org.junit.Test;
+public class ConnectorTest extends TestCase{
 
-
-public class ConnectorTest {
-
-	@Test
 	public void testConnector() {
 		Connector c1 = new Connector(3,4);
 		assertTrue(c1.endPt1() == 3);
@@ -15,7 +11,6 @@ public class ConnectorTest {
 		assertTrue(c1.equals(c2));					// checks if constructor works when p1 > p2
 	}
 
-	@Test
 	public void testToConnector() {
 		// test toConnector() with valid user inputs
 		Connector c1 = new Connector(3,4);
