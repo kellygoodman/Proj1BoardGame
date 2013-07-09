@@ -53,40 +53,23 @@ public class Connector {
 	// return the corresponding connector.  Otherwise, throw IllegalFormatException.
 	public static Connector toConnector (String s) throws IllegalFormatException {
 		Connector returnConnector=null;
-		char[] connectorChars = s.toCharArray();
+		char[] connectorChars = s.trim().toCharArray();
+		
+		if (connectorChars.length != 2) {
+			if (Board.iAmDebugging) {
+				System.out.println("Throwing exception: number of digits not equal to 2");
+			}
+			throw new IllegalFormatException();
+		}
+		int p1 = Character.getNumericValue(connectorChars[0]);
+		int p2 = Character.getNumericValue(connectorChars[1]);
+		
 		if (Board.iAmDebugging) {
-			for (int i = 0 ; i < connectorChars.length; i++) {
-				int out = Character.getNumericValue( connectorChars[i]);
-				System.out.println(out);
-			}
+			System.out.println("p1 = "+ p1);
+			System.out.println("p2 = "+ p2);
 		}
-		for (int i = 0 ; i<connectorChars.length ;) {
-			if (Character.isWhitespace(connectorChars[i])) {
-				i++; //initial white space - just move to next character
-			} else if (Character.isDigit(connectorChars[i]) && Character.isDigit(connectorChars[i+1])) {
-				if (Board.iAmDebugging) {
-					System.out.println("i = "+i);
-				}
-				for (int k = i+2 ; k<connectorChars.length ; k++) { //check remaining chars
-					if (!(Character.isWhitespace(connectorChars[k]))) {
-						throw new IllegalFormatException(); //if they're not white space, throw an exception
-					}
-				}
-				if (Board.iAmDebugging) {
-					System.out.println("Checked white space");
-				}
-				int p1 = Character.getNumericValue( connectorChars[i]); //Successfully checked all remaining spaces, time to make connector
-				int p2 = Character.getNumericValue( connectorChars[i+1]);
-				if (Board.iAmDebugging) {
-					System.out.println("p1 = "+ p1);
-					System.out.println("p2 = "+ p2);
-				}
-				returnConnector = new Connector(p1, p2);
-				break;
-			} else {
-				throw new IllegalFormatException(); //hit something that is neither white space nor digits
-			}
-		}
+		returnConnector = new Connector(p1, p2);
+		
 		if (returnConnector.isOK()) {
 			if (Board.iAmDebugging) {
 				System.out.println("Connector is ok");
@@ -94,7 +77,7 @@ public class Connector {
 			return returnConnector;
 		} else {
 			if (Board.iAmDebugging) {
-				System.out.println("Throwing exception");
+				System.out.println("Throwing exception: Connector is NOT ok");
 			}
 			throw new IllegalFormatException();
 		}
