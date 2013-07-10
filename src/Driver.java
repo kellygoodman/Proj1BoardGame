@@ -42,6 +42,9 @@ public class Driver {
 			}
 			myBoard.add (cnctr, Color.RED);
 			assert myBoard.isOK ( );
+			if (Board.iAmDebugging) {			// for debugging
+				myDisplay.repaint ( );			// for debugging
+			}						// for debugging
 			
 			// Now it's the computer's turn.
 			Connector computerMove = myBoard.choice ( );
